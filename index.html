@@ -1,8 +1,17 @@
 <!DOCTYPE html>
     <html>
+        <head>
+            <script src="//code.jquery.com/jquery-1.4.2.min.js"></script>
+            <script src="jquery.csvToTable.js"></script>
+        </head>
         <body>
-            <h1>
-                Hello, World!
-            </h1>
+            CSV To Table:
+            <br>
+            <div class = "csv_table_convert"></div>
         </body>
+        <script>
+                $(function() {
+                  $('.csv_table_convert').CSVToTable('test.csv');
+                });
+        </script>
     </html>
