@@ -5,11 +5,27 @@ import csv, time
 import subprocess
 
 # diffとるためのやつ
-ranking_old = 0
+ranking_old = 75514
 time_flag = True
 
 # 止まるんじゃねえぞ...
 while True:
+    # 現在時刻(時)を取得
+    if datetime.now().hour != 9:
+        # 9時ではないので359秒(59分59秒)待つ
+        time.sleep(359)
+        continue
+    
+    # 9時にゃん
+
+    # 現在時刻(分)を取得
+    if datetime.now().minute != 59:
+        # 9時59分ではないので59秒待つ
+        time.sleep(59)
+        continue
+
+    # 9時59分にゃん
+
     # 現在時刻(秒)を取得
     while datetime.now().second != 59:
         # 59分59秒ではないので1秒待つ
@@ -18,7 +34,7 @@ while True:
     # もう一秒待つ
     time.sleep(1)
 
-    # 00分00秒になったぞ
+    # 10時00分00秒にゃん
 
     # csvファイルを追記モードで開く
     file = open('test.csv', 'a')
@@ -28,7 +44,7 @@ while True:
     csv_list = []
 
     # 現在時刻を年月時分秒で取得
-    time_ = datetime.now().strftime("%Y%m%d%H%M%S")
+    time_ = datetime.now().strftime("%m%d")
     # リストの1カラム目に時間を記述
     csv_list.append(time_)
 
