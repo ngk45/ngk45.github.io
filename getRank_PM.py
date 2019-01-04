@@ -55,5 +55,7 @@ while True:
     # ターミナルにも出力(確認用)
     print (time_, ranking)
 
-    subprocess.call('git commit -m "updateCSV" test.csv')
-    subprocess.call('git push')
+    res = subprocess.call("git commit")
+    print (res)
+    res2 = subprocess.call("git push")
+    print (res2)
