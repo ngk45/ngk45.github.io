@@ -58,4 +58,4 @@ while True:
     cmd = "git commit -a -m updateCSV"
     subprocess.call(cmd.split())
     cmd2 = "git push origin master"
-    subprocess.call(cmd.split())
+    subprocess.call(cmd2.split())
