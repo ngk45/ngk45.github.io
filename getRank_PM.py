@@ -55,7 +55,7 @@ while True:
     # ターミナルにも出力(確認用)
     print (time_, ranking)
 
-    cmd = "git commit -m 'up' test.csv"
+    cmd = "git commit -a"
     subprocess.call(cmd.split())
     cmd2 = "git push origin master"
     subprocess.call(cmd.split())
