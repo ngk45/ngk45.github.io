@@ -4,6 +4,8 @@ from datetime import datetime
 import csv, time
 import subprocess
 
+# diffとるためのやつ
+ranking_old = 0
 time_flag = True
 
 # 止まるんじゃねえぞ...
@@ -49,6 +51,9 @@ while True:
     
     # リストの2カラム目に時間を記述
     csv_list.append(ranking)
+    # 3カラム目に前日比
+    csv_list.append(ranking_old - ranking)
+    ranking_old = ranking
     # csvに追記敷く
     writer.writerow(csv_list)
     # 開けたら閉めようね
