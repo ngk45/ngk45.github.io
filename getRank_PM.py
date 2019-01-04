@@ -57,5 +57,5 @@ while True:
 
     cmd = "git commit -m 'up' test.csv"
     subprocess.call(cmd.split())
-    cmd2 = "git push"
+    cmd2 = "git push origin master"
     subprocess.call(cmd.split())
