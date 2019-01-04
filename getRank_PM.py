@@ -10,7 +10,7 @@ time_flag = True
 while True:
     # 現在時刻(秒)を取得
     while datetime.now().second != 59:
-        #59分59秒ではないので1秒待つ
+        # 59分59秒ではないので1秒待つ
         time.sleep(1)
     
     # もう一秒待つ
@@ -26,11 +26,11 @@ while True:
     csv_list = []
 
     # 現在時刻を年月時分秒で取得
-    time_ = datetime.now().strftime("%Y/%m/%d %H:%M:%S")
+    time_ = datetime.now().strftime("%Y%m%d%H%M%S")
     # リストの1カラム目に時間を記述
     csv_list.append(time_)
 
-    #URLを文字列として宣言
+    # URLを文字列として宣言
     url = 'https://osu.ppy.sh/users/8341091'
 
     # URL先のページにアクセス
@@ -42,8 +42,10 @@ while True:
     # 複数classが設定されている可能性があるのでfirst=True
     element = response.html.find('div.value-display__value', first = True)
 
-    # (要素).textで数値(要素タグで囲まれた文字列)を取得
-    ranking = element.text
+    # (要素).textでカンマ数値(要素タグで囲まれた文字列)を取得
+    ranking_raw = element.text
+    # カンマ数値(文字列)を数値に変換
+    ranking = int(ranking_raw.replace(',', ''))
     
     # リストの2カラム目に時間を記述
     csv_list.append(ranking)
@@ -55,7 +57,10 @@ while True:
     # ターミナルにも出力(確認用)
     print (time_, ranking)
 
-    cmd = "git commit -a -m updateCSV"
-    subprocess.call(cmd.split())
-    cmd2 = "git push origin master"
-    subprocess.call(cmd2.split())
+    # 実行したいコマンド1(commit)
+    cmd_commit = "git commit -a -m update_CSV"
+    # Python上で外部コマンドを実行
+    subprocess.call(cmd_commit.split())
+    # 実行したいコマンド2(push)
+    cmd_push = "git push origin master"
+    subprocess.call(cmd_push.split())
