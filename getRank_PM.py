@@ -45,7 +45,7 @@ csv_list.append(ranking_old - ranking)
 ranking_old = ranking
 # csvに追記敷く
 writer.writerow(csv_list)
-# 開けたら閉めようね
+# 閉める
 file.close()
 
 # ターミナルにも出力(確認用)
